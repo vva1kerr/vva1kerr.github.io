@@ -1,0 +1,44 @@
+<!-- C:\Users\razer\Desktop\walkerrh.github.io\SCROLLS_FOLDER\TESTING\test_js_solar.html -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solar Positions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        label, input {
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Solar Positions Finder</h1>
+    <form id="position-form">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" required>
+        
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" required>
+        
+        <label for="planetId">Planet ID (0-9):</label>
+        <input type="number" id="planetId" min="0" max="9" required>
+        
+        <button type="submit">Find Positions</button>
+    </form>
+    <h2>Positions:</h2>
+    <pre id="positions-output"></pre>
+
+    <!-- Make sure this path matches the output directory -->
+    <script src="/GEN_web/dist/bundle.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+    <head>
+
+        {% include head-custom.html %}
+
+    </head>
+
+    <body class="page home">
+
+        <div id="sidebar">
+
+            <header>
+                <h1>2ln.tech</h1>
+            </header>
+
+            <nav>
+                <a href="{{ '/SCROLLS_FOLDER/scrolls.html' | relative_url }}">SCROLLS</a>
+            </nav>
+            
+            <div>
+                <p>
+                    <a id="bottom-link" href="{{ '/legal/L.html' | relative_url }}">LICENSE</a>
+                    
+                    <a id="bottom-link" href="{{ '/legal/terms_of_service.html' | relative_url }}">T.O.S.</a>
+                </p>
+            </div>
+
+            <div>
+                <!-- This code snippet includes an audio player with play, pause, and skip buttons. -->
+                <div class="sidebar"></div>
+                <audio id="myAudio" loop></audio>
+                    <source src="/assets/audio/Utai Iv Reawakening - Kenji Kawai.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <button onclick="playAudio()">Play</button>
+                <button onclick="pauseAudio()">Pause</button>
+                <button onclick="skipAudio()">Skip</button>
+                </div>
+
+                <script>
+                var audio = document.getElementById("myAudio");
+
+                /**
+                * Plays the audio.
+                */
+                function playAudio() {
+                    audio.play();
+                }
+
+                /**
+                * Pauses the audio.
+                */
+                function pauseAudio() {
+                    audio.pause();
+                }
+
+                /**
+                * Skips to the beginning of the audio.
+                */
+                function skipAudio() {
+                    audio.currentTime = 0;
+                }
+                </script>
+            </div>
+
+        </div>
+
+        <main class="container">
+
+            <div class="content">
+
+                <!-- <section id="content">  -->
+                    {{ content }} 
+                <!-- </section> -->
+
+            </div>
+
+            <!-- <div class="marquee"><b>01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101</b></div> -->
+        </main>
+
+    </body>
+
+</html>
+

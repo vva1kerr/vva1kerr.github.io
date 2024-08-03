@@ -1,0 +1,37 @@
+
+[comment]: <> (this KINDA works, shows small picture that takes you outside of the page when clicked on)
+
+[comment]: <> (this just shows a link, when clicked takes you outside the page)
+
+[comment]: <> ()
+https://media.githubusercontent.com/media/walkerrh/walkerrh.github.io/main/assets/me/a_college_in_florida.mp4
+
+[comment]: <> (<style> .video-container { position: relative; padding-bottom: 56.25%; /* 16:9 aspect ratio */ height: 0; overflow: hidden; max-width: 100%; background: #000; })
+
+[comment]: <> (.video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; } </style>)
+
+[comment]: <> ()
+
+<div class="video-container"> <video width="320" height="240" controls loop="" muted="" autoplay=""> <source src="https://github.com/walkerrh/walkerrh.github.io/assets/me/a_college_in_florida.mp4" type="video/mp4"> </video> </div>
+
+[comment]: <> (this KINDA works, shows small picture that takes you outside of the page when clicked on)
+
+[comment]: <> ()
+
+<video src="https://userimages.githubusercontent.com/walkerrh.github.io/assets/me/a_college_in_florida.mp4" width="320" height="240" controls></video>
+
+[comment]: <> (this KINDA works, shows small picture that takes you outside of the page when clicked on)
+
+<video src="/walkerrh.github.io/assets/me/a_college_in_florida.mp4" width="320" height="240" controls></video>
+
+
+
+
+
+
+
+
+
+[comment]: <> (this works, drag mp4 into page on github when in edit mode)
+
+https://github.com/Walkerrh/walkerrh.github.io/assets/57651882/8950a85f-04ff-4b95-a4c7-f565c5613d41

@@ -1,0 +1,311 @@
+/* @import "./fonts.css"; */
+
+/* 
+# are id tags 
+. are class tags
+*/
+
+/* the * is an everything slector */
+* {
+	font-family: sans-serif;
+	box-sizing: border-box;
+	font-weight: bold;
+    font-style: normal;
+}
+
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+/* 
+In CSS, the @media rule is used to apply styles conditionally based on the characteristics of the viewport or device, such as its width, height, orientation, resolution, etc. This is part of the concept known as media queries, which are essential for creating responsive designs.
+
+(min-width: 49rem) This condition checks if the viewport width is at least 49 rem units
+ */
+@media (min-width: 49rem) {
+	html {
+		font-size: 1.0rem;
+	}
+}
+
+body {
+	text-size-adjust: 100%;
+	background-attachment: fixed;
+	background-color: #202020;
+	color: rgb(255, 255, 255);
+	flex-direction: column;
+	min-height: 100vh;
+	font-weight: bold;
+}
+
+/* links */
+a {
+	color: #000000;
+	text-decoration: none;
+	font-weight:bold;
+	font-weight: bold;
+}
+
+a:hover,
+a:focus {
+	text-decoration: underline;
+}
+
+/* img is used for any kind of image types like jpg or png */
+img {
+	border-radius: 5px;
+	display: block;
+	height: auto;
+	margin: 0 0 1rem;
+	max-width: 100%;
+}
+
+/* headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+	line-height: 1.25;
+	margin-bottom: 0.5rem;
+	font-weight: bold;
+	text-rendering: optimizeLegibility;
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1rem;
+}
+
+/* class container has child div has child headder */
+.container > div > h1 {
+	color: rgb(0, 0, 0);
+}
+
+.container div h2 {
+	color: rgba(0, 0, 0, 0.875);
+}
+
+.container div h2 {
+	color: rgba(0, 0, 0, 0.75);
+}
+
+.container div h3 {
+	color: rgba(0, 0, 0, 0.625);
+}
+
+/* paragraph */
+p {
+	margin-bottom: 1rem;
+	margin-top: 0;
+	color: rgba(0, 0, 0, 0.5);
+	font-weight: bold;
+}
+
+/* 
+ul is unordered lists
+ol is ordered lists
+dl is description data 
+*/
+ul,
+ol,
+dl {
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+/* targets all list items */
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+	padding-top: 5px;
+	padding-top: 5px;
+}
+
+/* sidebar id */
+#sidebar {
+	flex: 0 0 auto;
+	padding: 2rem;
+}
+
+#sidebar .site-title {
+	font-size: 1.25rem;
+	font-weight: normal;
+	margin-bottom: 0.5rem;
+	margin-top: 0;
+}
+
+.container {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	background: #fff;
+	color: #515151;
+	padding: 2rem;
+	min-height: 100vh;
+}
+
+.container>header {
+	background: transparent;
+	color: #fff;
+	margin: -1.5rem 2rem 2rem;
+}
+
+.container>header h1 {
+	color: inherit;
+}
+
+@media (min-width: 49rem) {
+	body {
+		flex-direction: row;
+		min-height: 100vh;
+		-webkit-overflow-scrolling: touch;
+		overflow-y: auto;
+	}
+
+	#sidebar {
+		position: fixed;
+		/* bottom: 0; */
+		left: 0;
+		text-align: left;
+		width: 18rem;
+	}
+	#sidebar > #bottom-link {
+		bottom: 0;
+	}
+
+	#sidebar .site-title {
+		font-size: 3.25rem;
+	}
+
+	.container {
+		margin-left: 18rem;
+		padding: 4rem 4rem 0;
+	}
+
+	.container>header {
+		margin: 0;
+	}
+
+	.container>* {
+		/* max-width: 38rem; */
+		padding: 0;
+	}
+}
+
+#sidebar nav a {
+	color: #ffffff;
+}
+
+#sidebar p a {
+	color: #464646;
+}
+
+#sidebar a:hover,
+#sidebar a:focus {
+	text-decoration: underline;
+}
+
+#sidebar a.active {
+	font-weight: bold;
+}
+
+#sidebar .site-title {
+	color: #fff;
+}
+
+#sidebar nav {
+	display: flex;
+}
+
+/* @media print is used to adjust the page depending on if it is trying to be formatted to be printed */
+@media print {
+	#sidebar {
+		display: none;
+	}
+
+	body {
+		display: block;
+	}
+
+	.container {
+		display: block;
+		margin-left: 0;
+		margin-right: 0;
+		padding: 0;
+	}
+
+	.container>* {
+		max-width: 100%;
+	}
+
+	html {
+		font-size: normal;
+	}
+}
+
+/* code blocks are */
+pre {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    border-radius: 2px;
+    word-wrap: normal;
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+/* tables */
+table {
+    width: 100%;
+    margin: 0 0 20px 0;
+	display: table;
+	border-collapse: separate;
+	box-sizing: border-box;
+	text-indent: initial;
+	unicode-bidi: isolate;
+	border-spacing: 2px;
+	border-color: gray;
+}
+
+/* table header */
+th {
+    text-align: left;
+    border-bottom: 1px dashed #000000;
+    padding: 5px 10px
+}
+
+/* table data */
+td {
+    padding: 5px 10px
+}
+
+/* @font-face is for custom fonts but i dont think github pages allows for that */
+/* @font-face {
+	font-family: 'CyberPunkFont'; Name your font family
+	src: 
+			url('/walkerrh.github.io/css/fonts/cyberway-riders-font/CyberwayRiders.woff2') format('woff2'); Locate the .ttf file within your directory
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Jaro6pt'; Name your font family
+	src: 
+			url('/walkerrh.github.io/css/fonts/jaro/fonts/jaro6pt-regular-webfont.woff2') format('woff2'); Locate the .ttf file within your directory
+	font-weight: normal;
+	font-style: normal;
+} */

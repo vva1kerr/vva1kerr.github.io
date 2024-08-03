@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en-US' }}">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% include head-custom.html %}
+    {% seo %}
+    <style>
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            animation: marquee 10s linear infinite;
+            color: green;
+            font-weight: bold;
+        }
+
+        @keyframes marquee {
+            0%   { transform: translate(100%, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            max-height: 200px; /* Set the height limit */
+            overflow-y: auto;  /* Enable vertical scrolling */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="left-side-buttons">
+          <a id="a-title" href="{{ '/' | relative_url }}">
+            <h1>{{ site.title | default: site.github.repository_name }}</h1>
+          </a>
+          <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+          <section id="downloads">
+            <div class="dropdown">
+              <button class="dropbtn">Menu</button>
+              <div class="dropdown-content">
+                <a href="{{ '/index.html' | relative_url }}">Home</a>
+                <a href="{{ '/pages/certifications.html' | relative_url }}">Certifications</a>
+                <a href="{{ '/pages/research.html' | relative_url }}">Research</a>
+                <a href="{{ '/pages/machine_learning.html' | relative_url }}">Machine Learning</a>
+                <a href="{{ '/pages/chemistry.html' | relative_url }}">Chemistry</a>
+                <a href="{{ '/pages/Algebra.html' | relative_url }}">Algebra</a>
+                <a href="{{ '/pages/Trigonometry.html' | relative_url }}">Trigonometry</a>
+                <a href="{{ '/pages/Calculus.html' | relative_url }}">Calculus</a>
+                <a href="{{ '/pages/astronomy.html' | relative_url }}">Astronomy</a>
+                <a href="{{ '/pages/it.html' | relative_url }}">IT</a>
+                <a href="{{ '/pages/keyboard_shortcuts.html' | relative_url }}">Keyboard Shortcuts</a>
+                <a href="{{ '/pages/cyberpunk_slang.html' | relative_url }}">Cyberpunk Slang</a>
+                <a href="{{ '/pages/scifi_lore.html' | relative_url }}">Scifi Lore</a>
+                <a href="{{ '/pages/historicarchitecture.html' | relative_url }}">Historic Architecture</a>
+                <a href="{{ '/pages/infrastructure.html' | relative_url }}">Infrastructure</a>
+                <a href="{{ '/pages/population.html' | relative_url }}">Population</a>
+                <a href="{{ '/pages/books.html' | relative_url }}">Books</a>
+                <a href="{{ '/pages/american_history.html' | relative_url }}">American History</a>
+                <a href="{{ '/pages/general_art.html' | relative_url }}">General Art</a>
+                <a href="{{ '/pages/religious_art.html' | relative_url }}">Religious Art</a>
+                <a href="{{ '/pages/timelines.html' | relative_url }}">Timelines</a>
+                <a href="{{ '/pages/as_above_so_below.html' | relative_url }}">As Above, So Below</a>
+                <a href="{{ '/pages/luminaries_foresight.html' | relative_url }}">Luminaries' Foresight</a>
+                <a href="{{ '/pages/russian.html' | relative_url }}">Russian</a>
+                <a href="{{ '/pages/casino.html' | relative_url }}">Casino</a>
+                <a href="{{ '/pages/test_buttons.html' | relative_url }}">test the buttons</a>
+              </div>
+            </div>
+          </section>
+          <audio autoplay loop>
+            <source src="assets/audio/Utai Iv Reawakening - Kenji Kawai.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <div class="right-side-time-display">
+          <p id="timeSEA"></p>
+          <p id="timeCHI"></p>
+          <p id="timeNY"></p>
+          <p id="timeLDN"></p>
+          <p id="timeMOS"></p>
+          <p id="timeDUB"></p>
+          <p id="timeSG"></p>
+          <p id="timeTOK"></p>
+    
+          <script>
+            function updateTime() {
+                var d = new Date();
+              
+                document.getElementById('timeSEA').innerHTML = 'MTL SEA: ' + new Intl.DateTimeFormat('en-US', {timeZone: 'America/Los_Angeles', timeStyle: 'full'}).format(d);
+                document.getElementById('timeCHI').innerHTML = 'CHI: ' + new Intl.DateTimeFormat('en-US', {timeZone: 'America/Chicago', timeStyle: 'full'}).format(d);
+                document.getElementById('timeNY').innerHTML = 'NYC MIA: ' + new Intl.DateTimeFormat('en-US', {timeZone: 'America/New_York', timeStyle: 'full'}).format(d);
+                document.getElementById('timeLDN').innerHTML = 'LDN: ' + new Intl.DateTimeFormat('en-GB', {timeZone: 'Europe/London', timeStyle: 'full'}).format(d);
+                document.getElementById('timeMOS').innerHTML = 'MSK: ' + new Intl.DateTimeFormat('ru-RU', {timeZone: 'Europe/Moscow', timeStyle: 'full'}).format(d);
+                document.getElementById('timeDUB').innerHTML = 'DU: ' + new Intl.DateTimeFormat('en-AE', {timeZone: 'Asia/Dubai', timeStyle: 'full'}).format(d);
+                document.getElementById('timeSG').innerHTML = 'SG HK: ' + new Intl.DateTimeFormat('en-SG', {timeZone: 'Asia/Singapore', timeStyle: 'full'}).format(d);
+                document.getElementById('timeTOK').innerHTML = 'TYO: ' + new Intl.DateTimeFormat('en-JP', {timeZone: 'Asia/Tokyo', timeStyle: 'full'}).format(d);
+                
+                setTimeout(updateTime, 1000);
+            }
+            
+            updateTime();
+          </script>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        {{ content }}
+      </section>
+    </div>
+    <div class="marquee"><b>01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101</b></div>
+  </body>
+</html>
