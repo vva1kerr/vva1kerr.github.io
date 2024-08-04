@@ -101,3 +101,30 @@ $ git add .
 $ git commit -m "explain changes"
 $ git push origin main
 ```
+
+# NOTE:
+
+I’ve found that the ssh-agent will need to be established each time:
+
+1. A new terminal is opened
+
+2. And a connection to GitHub is tried
+
+In short, you can simply type this to 'fix” it ssh-add ~/.ssh/<TheKeyYouMade>
+
+As WSL searches the Linux environment by default, it will search, attempt, and add the key you stored in the following folder:
+```bash
+/home/<username>/.ssh/ 
+```
+
+Also in WSL, 
+
+if viewing from Windows into Linux the path is:
+```bash
+\\wsl$\Ubuntu\home\<username>\
+```
+
+if viewing from Linux into Windows the path is
+```powershell
+/mnt/c/Users/<username>/
+```
