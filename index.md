@@ -3,7 +3,7 @@
 <iframe 
     width="560" 
     height="315" 
-    src="https://www.youtube.com/embed/9Ub30X64o3E" 
+    src="https://youtu.be/9Ub30X64o3E?si=QYosDlHZ6CH9qNBm" 
     title="YouTube video player" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
