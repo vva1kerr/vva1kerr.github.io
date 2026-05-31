@@ -1,5 +1,12 @@
 [
-  { "id": "home",     "label": "Home",       "file": "docs/home.md" },
-  { "id": "notes",    "label": "Notes",      "file": "docs/notes.md" },
-  { "id": "projects", "label": "Projects",   "file": "docs/projects.md" }
+  {
+    "id": "home",
+    "label": "Home",
+    "file": "docs/home.md"
+  },
+  {
+    "id": "links",
+    "label": "Links",
+    "file": "docs/links.md"
+  }
 ]

@@ -37,3 +37,5 @@ That's it. No build step, no npm, no Jekyll.
 ## Direct links
 
 Pages are linkable via hash: `yoursite.github.io/#notes`
+
+bash scripts/gen-manifest.sh
