@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Notes</title>
+
+  <!-- Markdown parser -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <!-- Syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <style>
+    :root {
+      --bg:        #0d0f12;
+      --surface:   #151920;
+      --border:    #222831;
+      --accent:    #4af2a1;
+      --accent2:   #1de9b6;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+    }
+
+    /* ── Layout ── */
+    #app {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* ── Sidebar ── */
+    #sidebar {
+      width: 220px;
+      min-width: 220px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      overflow-y: auto;
+    }
+
+    #sidebar-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #sidebar-header .site-title {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #sidebar-header .site-subtitle {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+      font-family: var(--font-mono);
+    }
+
+    #nav {
+      padding: 12px 8px;
+      flex: 1;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--muted);
+      transition: all 0.15s ease;
+      user-select: none;
+      border: 1px solid transparent;
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+
+    .nav-item:hover {
+      background: rgba(74, 242, 161, 0.06);
+      color: var(--text);
+    }
+
+    .nav-item.active {
+      background: rgba(74, 242, 161, 0.1);
+      color: var(--accent);
+      border-color: rgba(74, 242, 161, 0.2);
+    }
+
+    .nav-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    .nav-item.active::before {
+      opacity: 1;
+    }
+
+    /* ── Main content ── */
+    #main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 48px 56px;
+      max-width: 860px;
+    }
+
+    /* ── Loading / Error ── */
+    #content-area {
+      animation: fadein 0.2s ease;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .loading {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+
+    /* ── Markdown styles ── */
+    #content-area h1 {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    #content-area h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 36px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #content-area h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent2);
+      margin: 24px 0 8px;
+    }
+
+    #content-area p {
+      line-height: 1.75;
+      color: #b0bec5;
+      margin-bottom: 16px;
+    }
+
+    #content-area a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74, 242, 161, 0.3);
+      transition: border-color 0.15s;
+    }
+
+    #content-area a:hover {
+      border-color: var(--accent);
+    }
+
+    #content-area code:not(pre code) {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      background: rgba(74, 242, 161, 0.08);
+      color: var(--accent2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(74, 242, 161, 0.15);
+    }
+
+    #content-area pre {
+      background: #0a0c0f;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    #content-area pre code {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    #content-area blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 4px 0 4px 20px;
+      margin: 20px 0;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    #content-area ul, #content-area ol {
+      padding-left: 20px;
+      margin-bottom: 16px;
+      color: #b0bec5;
+      line-height: 1.75;
+    }
+
+    #content-area li { margin-bottom: 4px; }
+
+    #content-area table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    #content-area th {
+      background: var(--surface);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #content-area td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: #b0bec5;
+    }
+
+    #content-area tr:last-child td { border-bottom: none; }
+
+    #content-area hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    #content-area img {
+      max-width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Mobile ── */
+    #menu-toggle {
+      display: none;
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 100;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    @media (max-width: 700px) {
+      #menu-toggle { display: block; }
+
+      #sidebar {
+        position: fixed;
+        top: 0; left: 0; bottom: 0;
+        z-index: 50;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        width: 240px;
+      }
+
+      #sidebar.open { transform: translateX(0); }
+
+      #main { padding: 64px 24px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<button id="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+<div id="app">
+  <aside id="sidebar">
+    <div id="sidebar-header">
+      <div class="site-title">VVA1KERR</div>
+      <div class="site-subtitle">// compsci notes</div>
+    </div>
+    <nav id="nav">
+      <!-- populated by JS -->
+    </nav>
+  </aside>
+
+  <main id="main">
+    <div id="content-area"><span class="loading">loading...</span></div>
+  </main>
+</div>
+
+<script>
+  // ── Configure marked ──
+  marked.setOptions({ breaks: true, gfm: true });
+
+  const nav         = document.getElementById('nav');
+  const contentArea = document.getElementById('content-area');
+  let currentId     = null;
+
+  // ── Load manifest, build nav ──
+  async function init() {
+    const res      = await fetch('manifest.json');
+    const pages    = await res.json();
+
+    pages.forEach((page, i) => {
+      const item = document.createElement('div');
+      item.className  = 'nav-item';
+      item.textContent = page.label;
+      item.dataset.id  = page.id;
+      item.onclick     = () => loadPage(page, pages);
+      nav.appendChild(item);
+
+      // load first page by default (or match URL hash)
+      if (i === 0 && !location.hash) loadPage(page, pages);
+    });
+
+    // support direct linking via #pageid
+    if (location.hash) {
+      const id   = location.hash.slice(1);
+      const page = pages.find(p => p.id === id);
+      if (page) loadPage(page, pages);
+    }
+  }
+
+  // ── Fetch and render a page ──
+  async function loadPage(page, pages) {
+    // update nav active state
+    document.querySelectorAll('.nav-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.id === page.id);
+    });
+
+    currentId = page.id;
+    location.hash = page.id;
+
+    contentArea.innerHTML = '<span class="loading">loading...</span>';
+
+    try {
+      const res  = await fetch(page.file + '?v=' + Date.now());
+      if (!res.ok) throw new Error(res.status);
+      const text = await res.text();
+      const html = marked.parse(text);
+
+      contentArea.innerHTML = html;
+      contentArea.style.animation = 'none';
+      contentArea.offsetHeight;  // reflow
+      contentArea.style.animation = '';
+
+      // syntax highlight code blocks
+      contentArea.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
+
+      // close mobile sidebar after nav
+      document.getElementById('sidebar').classList.remove('open');
+
+      window.scrollTo(0, 0);
+    } catch (e) {
+      contentArea.innerHTML = `<p style="color:#ef4444">Could not load <code>${page.file}</code> — make sure the file exists.</p>`;
+    }
+  }
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+  }
+
+  init();
+</script>
+
+</body>
+</html>
