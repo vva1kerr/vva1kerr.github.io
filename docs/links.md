@@ -979,6 +979,13 @@ Official download/home pages for apps from `foobarBin/`.
 | Decolonize Palestine | https://decolonizepalestine.com | Educational resource on Palestine |
 | dotCommunist Manifesto | https://moglen.law.columbia.edu/publications/dcm.html | Eben Moglen's dotCommunist Manifesto |
 
+
+### Camera Reselling
+| Site | URL | Description |
+|-----|--------------|-------------|
+| mpb | https://www.mpb.com | - |
+| keh | https://www.keh.com | - |
+| thinkorswim | https://usedphotopro.com | - |
 ---
 
 *Combined from `bookmarks.html`, `internet_tools.md`, and `bins.md` · vva1kerr*
